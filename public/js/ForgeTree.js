@@ -41,10 +41,15 @@ $(document).ready(function() {
 
 function createNewBucket() {
     var bucketKey = $('#newBucketKey').val();
+
+    if (bucketKey === "") {
+        alert("Please input Name");
+        return;
+    }
     jQuery.post({
         url: '/api/forge/oss/buckets',
         contentType: 'application/json',
-        data: JSON.stringify({ 'bucketKey': bucketKey }),
+        data: JSON.stringify({ 'bucketKey': bucketKey.toLowerCase() }),
         success: function(res) {
             $('#appBuckets').jstree(true).refresh();
             $('#createBucketModal').modal('toggle');
@@ -124,6 +129,13 @@ function autodeskCustomMenu(autodeskNode) {
                         uploadFile();
                     },
                     icon: 'glyphicon glyphicon-cloud-upload'
+                },
+                deleteFile: {
+                    label: "Delete file",
+                    action: function() {
+                        deleteFile();
+                    },
+                    icon: 'glyphicon glyphicon-cloud-upload'
                 }
             };
             break;
@@ -146,6 +158,10 @@ function autodeskCustomMenu(autodeskNode) {
 
 function uploadFile() {
     $('#hiddenUploadField').click();
+}
+
+function deleteFile() {
+    console.log("Canhdeptrai")
 }
 
 function translateObject(node) {

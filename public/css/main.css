@@ -23,3 +23,10 @@ body {
 #forgeViewer {
     width: 100%;
 }
+
+.GroupExtensionIcon {
+    background-image: url(/img/myAwesomeIcon.png);
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
